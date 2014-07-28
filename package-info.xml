@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.elkarte.net/site/package-info">
+<package-info xmlns="http://www.elkarte.net/site/package-info" xmlns:elk="http://www.elkarte.net/">
+	<name>Limit Guest View</name>
+	<id>spuds:LimitGuestView</id>
+	<version>0.1</version>
+	<type>modification</type>
+	<license><![CDATA[
+/**
+ * Limit Guest View
+ *
+ * @author spuds
+ * @license MPL 1.1 http://mozilla.org/MPL/1.1/
+ *
+ * @version 0.1
+ */
+]]></license>
+
+	<install for="1.0 RC2 - 1.0.99">
+		<require-file name="limitGuestView.english.php" destination="LANGUAGEDIR/english">The language strings</require-file>
+		<require-file name="limitGuestView.subs.php" destination="SUBSDIR">The hooks</require-file>
+		<hook hook="integrate_general_mod_settings" file="SUBSDIR/limitGuestView.subs.php" function="igm_limitGuestView" />
+		<hook hook="integrate_prepare_display_context" file="SUBSDIR/limitGuestView.subs.php" function="ipdc_limitGuestView" />
+		<redirect url="index.php?action=admin;area=addonsettings;sa=general" timeout="5000">redirect.txt</redirect>
+	</install>
+
+	<uninstall for="1.0 RC2 - 1.0.99">
+		<hook reverse="true" hook="integrate_general_mod_settings" file="SUBSDIR/limitGuestView.subs.php" function="igm_limitGuestView" />
+		<hook reverse="true" hook="integrate_prepare_display_context" file="SUBSDIR/limitGuestView.subs.php" function="ipdc_limitGuestView" />
+		<remove-file name="LANGUAGEDIR/english/limitGuestView.english.php" />
+		<remove-file name="SUBSDIR/limitGuestView.subs.php" />
+	</uninstall>
+	
+</package-info>
+
