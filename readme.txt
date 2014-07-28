@@ -4,7 +4,7 @@
 [hr]
 
 [color=blue][b][size=12pt][u]Introduction[/u][/size][/b][/color]
-This allows you to set the number of characters a guest will see in the posts (on boards that guests can view) before the post text is cut short and ended with a nag note to logon/register.
+This allows you to set the number of characters a guest will see in a post (on boards that guests can view) before the post text is truncated and ended with a note to logon/register.
 
 [color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
 This modification is released under a MPL V1.1 license, a copy of it with its provisions is included with the package.
@@ -22,3 +22,4 @@ https://bitbucket.org/spuds_/elk_limit_guest_view
 [color=blue][b][size=12pt][u]Source[/u][/size][/b][/color]
 https://bitbucket.org/spuds_/elk_limit_guest_view/src
 [color=blue][b][size=12pt][u]Download[/u][/size][/b][/color]
+https://bitbucket.org/spuds_/elk_limit_guest_view/downloads

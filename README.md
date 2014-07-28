@@ -1,7 +1,7 @@
 ##Limit Guest View
 
 ###Introduction
-This adds allows you to choose the number of characters a guest can see in a post before they get a nag requesting to login or register
+This allows you to set the number of characters a guest will see in a post (on boards that guests can view) before the post text is truncated and ended with a note to logon/register.
 
 ###License
 The software is licensed under [Mozilla Public License 1.1 (MPL-1.1)](http://opensource.org/licenses/MPL-1.1).
