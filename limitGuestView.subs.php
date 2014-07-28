@@ -65,6 +65,8 @@ function ipdc_limitGuestView(&$output, &$message)
 /**
  * Truncate a string up to a number of characters while preserving whole words and HTML tags
  *
+ * This function is an adaption of the cake php function truncate in utility string.php (MIT)
+ *
  * @param string $text String to truncate.
  * @param integer $length Length of returned string
  * @param string|bool $ellipsis characters to add at the end of cut string, like ...
