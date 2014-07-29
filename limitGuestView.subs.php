@@ -27,9 +27,35 @@ function igm_limitGuestView(&$config_vars)
 	loadLanguage('limitGuestView');
 
 	$config_vars = array_merge($config_vars, array(
-		'',
 		array('int', 'limitGuestView_count', 'subtext' => $txt['limitGuestView_count_desc']),
 	));
+}
+
+/**
+ * irml_limitGuestView()
+ *
+ * - Recent Message Hook, integrate_recent_message_list, called from Recent.controller
+ * - Used to interact with the recent message array before its sent to the template
+ *
+ * @param int[] $messages
+ */
+function irml_limitGuestView($messages)
+{
+	global $modSettings, $context, $scripturl, $txt;
+
+	// Make sure we need to do anything
+	if (!$context['user']['is_guest'] || empty($modSettings['limitGuestView_count']))
+		return;
+
+	// Set the login or register message
+	loadLanguage('limitGuestView');
+	$nag = sprintf($txt['limitGuestView_nag'], '<a href="' . $scripturl . '?action=login">', '<a href="' . $scripturl . '?action=register">');
+
+	foreach ($messages as $msg_id)
+	{
+		if (Util::strlen($context['posts'][$msg_id]['body']) > $modSettings['limitGuestView_count'])
+			$context['posts'][$msg_id]['body'] = lgv_shorten_html($context['posts'][$msg_id]['body'], $modSettings['limitGuestView_count']) . $nag;
+	}
 }
 
 /**
@@ -58,14 +84,12 @@ function ipdc_limitGuestView(&$output, &$message)
 			$nag = sprintf($txt['limitGuestView_nag'], '<a href="' . $scripturl . '?action=login">', '<a href="' . $scripturl . '?action=register">');
 		}
 
-		$output['body'] = lgv_shorten_html($output['body'], $modSettings['limitGuestView_count'], $nag, false);
+		$output['body'] = lgv_shorten_html($output['body'], $modSettings['limitGuestView_count']) . $nag;
 	}
 }
 
 /**
  * Truncate a string up to a number of characters while preserving whole words and HTML tags
- *
- * This function is an adaption of the cake php function truncate in utility string.php (MIT)
  *
  * @param string $text String to truncate.
  * @param integer $length Length of returned string

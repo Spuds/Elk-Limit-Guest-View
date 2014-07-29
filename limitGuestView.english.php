@@ -1,4 +1,4 @@
 <?php
 $txt['limitGuestView_count'] = 'Number of characters to show to a guest.';
 $txt['limitGuestView_count_desc'] = 'Enter 0 to disable';
-$txt['limitGuestView_nag'] = '...<br /><br />Guests must %s<strong>Login</strong></a> or %s<strong>Register</strong></a> to view full posts.';
+$txt['limitGuestView_nag'] = '<br /><br />Guests must %s<strong>Login</strong></a> or %s<strong>Register</strong></a> to view full posts.';
