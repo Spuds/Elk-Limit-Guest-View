@@ -7,7 +7,7 @@
 This allows you to set the number of characters a guest will see in a post (on boards that guests can view) before the post text is truncated and ended with a note to logon/register.
 
 [color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
-This modification is released under a MPL V1.1 license, a copy of it with its provisions is included with the package.
+This addon is released under a MPL V1.1 license, a copy of it with its provisions is included with the package.
 
 [color=blue][b][size=12pt][u]Features[/u][/size][/b][/color]
 [list]
