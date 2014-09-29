@@ -30,6 +30,7 @@ function igm_limitGuestView(&$config_vars)
 	$config_vars = array_merge($config_vars, array(
 		array('int', 'limitGuestView_count', 'subtext' => $txt['limitGuestView_count_desc']),
 		array('check', 'limitGuestView_signature', 'subtext' => $txt['limitGuestView_signature_desc']),
+		'',
 	));
 }
 
