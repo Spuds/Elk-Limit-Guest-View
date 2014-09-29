@@ -29,6 +29,7 @@ function igm_limitGuestView(&$config_vars)
 
 	$config_vars = array_merge($config_vars, array(
 		array('int', 'limitGuestView_count', 'subtext' => $txt['limitGuestView_count_desc']),
+		array('check', 'limitGuestView_signature', 'subtext' => $txt['limitGuestView_signature_desc']),
 	));
 }
 
@@ -51,6 +52,9 @@ function irml_limitGuestView($messages)
 	// Set the login or register message
 	loadLanguage('limitGuestView');
 	$nag = sprintf($txt['limitGuestView_nag'], '<a href="' . $scripturl . '?action=login">', '<a href="' . $scripturl . '?action=register">');
+
+	if (!empty($modSettings['limitGuestView_signature']))
+		$context['signature_enabled'] = false;
 
 	foreach ($messages as $msg_id)
 	{
@@ -76,6 +80,9 @@ function ipdc_limitGuestView(&$output, &$message)
 	// Make sure we need to do anything
 	if (!$context['user']['is_guest'] || empty($modSettings['limitGuestView_count']))
 		return;
+
+	if (!empty($modSettings['limitGuestView_signature']))
+		$context['signature_enabled'] = false;
 
 	if (Util::strlen($output['body']) > $modSettings['limitGuestView_count'])
 	{
