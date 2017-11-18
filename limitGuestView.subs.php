@@ -11,7 +11,9 @@
  */
 
 if (!defined('ELK'))
+{
 	die('No access...');
+}
 
 /**
  * Integration hook, integrate_general_mod_settings
@@ -48,19 +50,25 @@ function irml_limitGuestView($messages)
 
 	// Make sure we need to do anything
 	if (!$context['user']['is_guest'] || empty($modSettings['limitGuestView_count']))
+	{
 		return;
+	}
 
 	// Set the login or register message
 	loadLanguage('limitGuestView');
 	$nag = sprintf($txt['limitGuestView_nag'], '<a href="' . $scripturl . '?action=login">', '<a href="' . $scripturl . '?action=register">');
 
 	if (!empty($modSettings['limitGuestView_signature']))
+	{
 		$context['signature_enabled'] = false;
+	}
 
 	foreach ($messages as $msg_id)
 	{
 		if (Util::strlen($context['posts'][$msg_id]['body']) > $modSettings['limitGuestView_count'])
+		{
 			$context['posts'][$msg_id]['body'] = Util::shorten_html($context['posts'][$msg_id]['body'], $modSettings['limitGuestView_count']) . $nag;
+		}
 	}
 }
 
@@ -80,10 +88,14 @@ function ipdc_limitGuestView(&$output, &$message)
 
 	// Make sure we need to do anything
 	if (!$context['user']['is_guest'] || empty($modSettings['limitGuestView_count']))
+	{
 		return;
+	}
 
 	if (!empty($modSettings['limitGuestView_signature']))
+	{
 		$context['signature_enabled'] = false;
+	}
 
 	if (Util::strlen($output['body']) > $modSettings['limitGuestView_count'])
 	{
