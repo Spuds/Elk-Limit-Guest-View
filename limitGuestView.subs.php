@@ -10,18 +10,13 @@
  *
  */
 
-if (!defined('ELK'))
-{
-	die('No access...');
-}
-
 /**
  * Integration hook, integrate_general_mod_settings
  *
  * - Not a lot of settings for this addon so we add them under the predefined
  * Miscellaneous area of the forum
  *
- * @param mixed[] $config_vars
+ * @param array $config_vars
  */
 function igm_limitGuestView(&$config_vars)
 {
@@ -78,8 +73,8 @@ function irml_limitGuestView($messages)
  * - Display Hook, integrate_prepare_display_context, called from Display.controller
  * - Used to interact with the message array before its sent to the template
  *
- * @param mixed[] $output
- * @param mixed[] $message
+ * @param array $output
+ * @param array $message
  */
 function ipdc_limitGuestView(&$output, &$message)
 {
